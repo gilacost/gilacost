@@ -1,0 +1,64 @@
+/*
+  Typography
+*/
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+html,body {
+    font-family: 'Montserrat', sans-serif;
+}
+
+h1 {
+    font-weight: 300;
+    font-style: normal;}
+
+/*
+  Layout
+*/
+
+html,body {
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+#container {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(12deg, #0072ab, #0072ab);
+    -webkit-transform: skew(0deg, -12deg);
+    transform: skew(0deg, -12deg);
+    margin-top: -205px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#content {
+    -webkit-transform: skew(0deg, 12deg);
+    transform: skew(0deg, 12deg);
+    margin-top: 205px;
+    width: 422px;
+}
+
+#container h1 {
+    border-bottom: 5px dashed rgba(255,255,255, 0.3);
+    cursor: default;
+    text-shadow: 0 1px 2px rgba(0,0,0,.3);
+}
+#container p {
+    text-shadow: 0 1px 2px rgba(0,0,0,.3);
+}
+
+.img-circle {
+    border-radius: 50%;
+    border: 5px solid rgba(255,255,255, 0.9);
+    box-shadow:  0 1px 2px rgba(0,0,0,.3);
+    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.3);
+    -moz-box-shadow: 0 1px 2px rgba(0,0,0,.3);
+}
+a {
+    text-decoration: none;
+    color: #003399;
+}
