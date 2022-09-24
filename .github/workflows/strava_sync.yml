@@ -1,0 +1,29 @@
+name: Strava sync
+
+on:
+  workflow_dispatch:
+
+env:
+  ELIXIR_VERSION: 1.14.0
+  OTP_VERSION: 25
+  STRAVA_CLIENT_ID: ${{ secrets.STRAVA_CLIENT_ID }}
+  STRAVA_REFRESH_TOKEN: ${{ secrets.STRAVA_REFRESH_TOKEN }}
+  STRAVA_CLIENT_SECRET: ${{ secrets.STRAVA_CLIENT_SECRET }}
+  DEBUG: "1"
+
+jobs:
+  build-test:
+    name: Build and Check Elixir Project
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup Elixir v${{ env.ELIXIR_VERSION }}-otp-${{ env.OTP_VERSION }}
+        uses: erlef/setup-elixir@v1
+        with:
+          elixir-version: ${{ env.ELIXIR_VERSION }}
+          otp-version: ${{ env.OTP_VERSION }}
+
+      - name: Strava sync
+        run: elixir strava_sync.ex
