@@ -123,7 +123,3 @@ new_readme =
   )
 
 File.write!("README.md", new_readme)
-
-# {_, 0} = System.shell("git add README.md")
-# {_, 0} = System.shell("git commit -m \"`date`\"")
-# {_, 0} = System.shell("git push origin HEAD")

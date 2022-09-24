@@ -1,14 +1,13 @@
 name: Strava sync
 
 on:
+  schedule:
+    - cron: "0 0 * * 0"
   workflow_dispatch:
 
 env:
   ELIXIR_VERSION: 1.14.0
   OTP_VERSION: 25
-  STRAVA_CLIENT_ID: ${{ secrets.STRAVA_CLIENT_ID }}
-  STRAVA_REFRESH_TOKEN: ${{ secrets.STRAVA_REFRESH_TOKEN }}
-  STRAVA_CLIENT_SECRET: ${{ secrets.STRAVA_CLIENT_SECRET }}
   DEBUG: "1"
 
 jobs:
@@ -26,4 +25,16 @@ jobs:
           otp-version: ${{ env.OTP_VERSION }}
 
       - name: Strava sync
+        env:
+          STRAVA_CLIENT_ID: ${{ secrets.STRAVA_CLIENT_ID }}
+          STRAVA_REFRESH_TOKEN: ${{ secrets.STRAVA_REFRESH_TOKEN }}
+          STRAVA_CLIENT_SECRET: ${{ secrets.STRAVA_CLIENT_SECRET }}
         run: elixir strava_sync.ex
+
+      - name: Commit changes
+        uses: EndBug/add-and-commit@v9
+        with:
+          author_name: Josep Lluis Giralt D'Lacoste
+          author_email: josepgiraltdlacoste@gmail.com
+          message: "Strava sync `date`"
+          add: "*.md"

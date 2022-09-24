@@ -22,10 +22,8 @@ stage of the delivery process.
 
 ## Strava summary
 
-  * Runs: 21
-  * Elevation Gain: 3428.90
-  * Total time: 10:05:29
-  * Total distance: 89.45
+- Runs: 21
+- Elevation Gain: 3428.90
 
 <!--
 - update hacker rank with erlang katas
