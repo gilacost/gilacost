@@ -119,7 +119,9 @@ new_readme =
     total_elevation_gain: :erlang.float_to_binary(summary.total_elevation_gain, decimals: 2),
     total_time: Format.to_hh_mm_ss(summary.total_time),
     total_distance:
-      summary.total_distance |> Kernel./(1000) |> :erlang.float_to_binary(decimals: 2)
+      summary.total_distance |> Kernel./(1000) |> :erlang.float_to_binary(decimals: 2),
+    from_date: after_unix |> DateTime.from_unix!() |> DateTime.to_date(),
+    to_date: DateTime.utc_now() |> DateTime.to_date()
   )
 
 File.write!("README.md", new_readme)

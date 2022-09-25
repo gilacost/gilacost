@@ -31,10 +31,14 @@ jobs:
           STRAVA_CLIENT_SECRET: ${{ secrets.STRAVA_CLIENT_SECRET }}
         run: elixir strava_sync.ex
 
+      - name: Get current date
+        id: date
+        run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
+
       - name: Commit changes
         uses: EndBug/add-and-commit@v9
         with:
           author_name: Josep Lluis Giralt D'Lacoste
           author_email: josepgiraltdlacoste@gmail.com
-          message: "Strava sync `date`"
+          message: "Strava sync ${{ steps.date.outputs.date }}"
           add: "*.md"

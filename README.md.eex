@@ -17,10 +17,15 @@ stage of the delivery process.
 - 🏗 Terraformer
 
 <!--
- todo strava summary date
+ maybe update with monthly stats in a table
+ meter el code analysis de simon
 -->
 
-## Strava summary
+## Strava summary ( <%= from_date %> //  <%= to_date %> )
+
+<!--
+meter el badge the last synced ci passed
+-->
 
   * Runs: <%= number_of_runs %>
   * Elevation Gain: <%= total_elevation_gain %>
