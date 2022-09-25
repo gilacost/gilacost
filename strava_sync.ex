@@ -110,6 +110,7 @@ defmodule Format do
 end
 
 # Avg/Pace: #{(summary.avg_pace / number_of_runs) |> :erlang.float_to_binary(decimals: 2)}
+# TODO maybe assignation is not needed and then can be used
 
 new_readme =
   "README.md.eex"
