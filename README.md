@@ -7,39 +7,51 @@ https://www.credly.com/badges/6855d098-6a9f-4292-bb2c-aa3745d8622c/public_url
 
 ## Hi :wave:, my name is Josep Lluis Giralt D'Lacoste but you can call me Pep :smile:
 
-I am a software engineer passionate about technology in general. I like every
-stage of the delivery process.
-
 - :angel: Hashicorp products advocate
 - :whale: Docker lover
 - :ship: Kubernetes enthusiast
 - :purple_heart: Elixir writer and erlang priest :heart:
 - 🏗 Terraformer
+- :robot: a bit obsessed with automation
+
+## About
+
+I am a software engineer passionate about technology in general. I like every
+stage of the delivery process and I've been struggling to explain to the
+market what is it what I like. I like code! It does not matter if it
+implements some business logic in the application layer or if it declares some
+resources at the operations layer. If you want to know more about my interests
+please take a :eyes: at my ventures.
+
+## Ventures
+
+- [The strava summary](./ventures/strava_summary.md)
+
+## Strava summary ( 2022-08-25 //  2022-09-25 )
 
 <!--
- todo strava summary date
+meter el badge the last synced ci passed
 -->
 
-## Strava summary
+  * Runs: 20
+  * Elevation Gain: 3372.50
+  * Total time: 9:55:48
+  * Total distance: 87.87
 
-- Runs: 21
-- Elevation Gain: 3428.90
-
+<!-- ## Skills in the box -->
+<!-- ## Working/Reading -->
 <!--
 - update hacker rank with erlang katas
 - todo group all AOCs
 - bring hacker news assessments to repo
 - more sexy badges
-- About some personal stuff
-- Working on
-- Skills in the tool box
 - personal site
-- list with links
 - more badges
 - bring all assessments to assessments
 - badge for ellie's co-op PR
 - repo with courses and put terraform stuff and others
 -->
+
 <hr>
 <!--
 <p align="center">

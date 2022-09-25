@@ -11,7 +11,7 @@ https://www.credly.com/badges/6855d098-6a9f-4292-bb2c-aa3745d8622c/public_url
 - :whale: Docker lover
 - :ship: Kubernetes enthusiast
 - :purple_heart: Elixir writer and erlang priest :heart:
-- 🏗 Terraformer
+- :building_construction: Terraformer
 - :robot: a bit obsessed with automation
 
 ## About
@@ -25,12 +25,13 @@ please take a :eyes: at my ventures.
 
 ## Ventures
 
-- [The strava summary](./ventures/strava_summary.md)
+- [The strava summary](./ventures/STRAVA_SUMMARY.md)
 
 ## Strava summary ( <%= from_date %> //  <%= to_date %> )
 
 <!--
 meter el badge the last synced ci passed
+https://github.com/ikatyang/emoji-cheat-sheet
 -->
 
   * Runs: <%= number_of_runs %>

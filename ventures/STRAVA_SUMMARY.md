@@ -1,4 +1,4 @@
-## What? 🧐
+## :partying_face: What?
 
 Last Friday I was trying to renew my github profile and I thought that would be
 nice to share something outside "coding stuff", so whoever visits it might get
@@ -7,11 +7,11 @@ to know a little bit more about myself.
 Three months ago I decided to fight some anxiety episodes by running away from
 them (literally), so I thought that would be cool to share my strava stats.
 
-## Objective 🤘
+## :pinched_fingers: Objective
 
 **Share a summary of the strava stats in my github profile**
 
-## Iterations 🤯
+## :exploding_head: Iterations
 
 1. Iframe not rendered in github
 2. Iframe not working properly anyway (add picture)
@@ -29,7 +29,7 @@ TODO
 
 TODO
 
-## Final solution 🤙
+## :cowboy_hat_face: Final solution
 
 1. Elixir script to the rescue ( when was this added and link to the docs )
    1.1 Refreshing oauth token
@@ -54,3 +54,5 @@ TODO
 TODO
 
 ### Automating the summary with GHA.
+
+TODO + adding the badge...
