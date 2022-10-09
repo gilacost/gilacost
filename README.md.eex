@@ -34,6 +34,8 @@ meter el badge the last synced ci passed
 https://github.com/ikatyang/emoji-cheat-sheet
 -->
 
+![Strava sync](https://github.com/gilacost/gilacost/workflows/Strava%20sync/badge.svg)
+
   * Runs: <%= number_of_runs %>
   * Elevation Gain: <%= total_elevation_gain %> m
   * Total time: <%= total_time %>

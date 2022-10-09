@@ -27,17 +27,17 @@ please take a :eyes: at my ventures.
 
 - [The strava summary](./ventures/STRAVA_SUMMARY.md)
 
-## Strava summary ( 2022-09-02 // 2022-10-02 )
+## Strava summary ( 2022-09-09 //  2022-10-09 )
 
 <!--
 meter el badge the last synced ci passed
 https://github.com/ikatyang/emoji-cheat-sheet
 -->
 
-- Runs: 17
-- Elevation Gain: 3003.90
-- Total time: 8:51:48
-- Total distance: 78.33
+  * Runs: 18
+  * Elevation Gain: 3815.60 m
+  * Total time: 11:21:50
+  * Total distance: 99.29 km
 
 <!-- ## Skills in the box -->
 <!-- ## Working/Reading -->

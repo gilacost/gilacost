@@ -1,8 +1,8 @@
 ## :partying_face: What?
 
-Last Friday I was trying to renew my github profile and I thought that would be
-nice to share something outside "coding stuff", so whoever visits it might get
-to know a little bit more about myself.
+Last Friday I was trying to renew my github profile and I thought that it would be
+nice to share something outside "coding stuff", so that whoever visits it might get
+to know a little bit more about me.
 
 Three months ago I decided to fight some anxiety episodes by running away from
 them (literally), so I thought that would be cool to share my strava stats.
@@ -19,25 +19,25 @@ them (literally), so I thought that would be cool to share my strava stats.
 
 ### Iframe not rendered in github
 
-If you go to your profile in strava you will find a share button at the bottom
-right corner that says share activities. If you press this button a pop-up will
-appear with some html code (iframe) that you can embed. Theoretically markdown
-allows to use inline html, [see this post](https://daringfireball.net/projects/markdown/syntax#html).
+If you go to your profile in strava you will find a share button in the bottom
+right corner that says "Share Activities". If you press this button, a pop-up will
+appear with some html code (an iframe) that you can embed into your code. Theoretically markdown
+lets you use inline html, [see this post](https://daringfireball.net/projects/markdown/syntax#html).
 
 _The result:_
 
 <!-- TODO compress png -->
 
-<img src="iframe not rendering" alt="./img/iframe_not_rendering.png" style="width:250px;"/>
+<img src="iframe not rendering" alt="./img/iframe_not_rendering.png" style="width:350px;"/>
 
-As I supected, even that markdown allows inline html github does not render it.
+As I suspected, even though markdown allows inline html, github does not render it.
 It makes sense for security reasons. At this point I thought maybe it does not
 work in my github profile but there is not reason why it should not work in
 github pages.
 
 ### Iframe not working properly anyway
 
-Before trying anything at github pages I wanted to create a simple html with
+Before trying anything in github pages, I wanted to create a simple html with
 the iframe snippet embedded.
 
 ```html
@@ -56,17 +56,17 @@ the iframe snippet embedded.
 </html>
 ```
 
-Surprisingly the iframe is not rendering the right stats, actually it looks like
+Surprisingly the iframe is not rendering the right stats. In fact, it looks like
 it is not rendering any stats at all.
 
-<img src="./img/iframe_fail.png" alt="iframe_fail" style="width:250px;"/>
+<img src="./img/iframe_fail.png" alt="iframe_fail" style="width:350px;"/>
 
-and this are the real stats in the my public profile:
+Yet these are the real stats in the my public profile:
 
-<img src="./img/public_profile.png" alt="public_profile" style="width:250px;"/>
+<img src="./img/public_profile.png" alt="public_profile" style="width:350px;"/>
 
 At this point I opened a ticket in strava support and totally parked the iframe
-path.
+idea.
 
 ### Floki, req and the DOM first load
 
@@ -91,13 +91,13 @@ Mix.install([
 
 Unfortunately this does not work as the stats shown in the public profile are
 loaded after the DOM has been rendered by some :shit: jQuery or who knows
-:shrug:. This outcome drives me inevitably to my latest iteration and Final
+:shrug:. This outcome drove me to my latest iteration and final
 solution.
 
 ## :cowboy_hat_face: Final solution
 
 1. Strava API
-   1.1 Refreshing oauth token
+   1.1 Refreshing the OAuth token
    1.2 Getting the activities
    1.3 EEX and rewriting the readme
 2. Automating the summary with GHA.
@@ -107,8 +107,8 @@ solution.
 **You need to create an strava application, see
 [the docs](https://developers.strava.com/docs/authentication/).**
 
-To be able to hit the Strava API without user interaction we need to get a
-oauth refresh token. We can build a simple router with plug and
+To be able to perform requests the Strava API without user interaction, we need to get a
+OAuth refresh token. We can build a simple router with plug and
 [strava](https://github.com/slashdotdash/strava) to print the refresh token
 like this:
 
@@ -163,8 +163,8 @@ defmodule RunningClub.Router do
   end
 ```
 
-Once you visit and "localhost:4000/activities" and you follow the OAUTH
-authorization flow you need to save the `refresh_token` somewhere.
+Once you visit `localhost:4000/activities` and you follow the OAuth
+authorization flow, you need to save the `refresh_token` somewhere.
 
 #### Refreshing oauth token
 
@@ -197,8 +197,8 @@ refresh_token_url =
 
 #### Getting the activities
 
-By hitting the refresh token url beforehand we ensure that anytime we hit the
-activities url our `access_token` will be valid, making our stats gathering
+By hitting the refresh token url beforehand, we ensure that anytime we hit the
+activities url, our `access_token` will be valid; making our stats gathering
 script idempotent. Now we can get the activities like so:
 
 ```elixir
@@ -216,10 +216,10 @@ after_unix = Date.utc_today() |> Timex.shift(months: -1) |> Timex.to_unix()
 
 #### EEX and rewriting the readme
 
-All of this is looking quite sexy so far but, how do I show this in the readme?
-if I want this stats to be shown in my profile I need to use some kind of
+All of this is looking quite sexy so far, but, how do I show this in the readme?
+If I want thrdr stats to be shown in my profile, I need to use some kind of
 templating system that allows me to build the stats and produce a new
-upated readme.
+updated readme.
 
 This is when EEX comes to play:
 
@@ -252,7 +252,7 @@ and the `README.md.eex` contains:
 
 ### Automating the summary with GHA.
 
-If you know me, you will already be aware that if something can be automated I
+If you know me, you will already be aware that if something can be automated, I
 will do so :robot: .
 
 In this case I wanted to:
@@ -286,8 +286,8 @@ I did this via [github_actions](https://github.com/features/actions):
 
 - find the full elixir script in [here](../strava_sync.ex).
 - find the GHA action in [here](../.github/workflows/strava_sync.yml).
-- latest strava sync workflow badge [![Strava Sync Actions Status](https://github.com/gilacost/gilacost/workflows/strava_sync/badge.svg)](https://github.com/gilacost/gilacost/actions)
+- latest strava sync workflow badge ![Strava sync](https://github.com/gilacost/gilacost/workflows/Strava%20sync/badge.svg)
 
-</hr>
+<hr>
 
 **love :heart: and peace :bird: to all**
