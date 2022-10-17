@@ -1,8 +1,8 @@
 ## :partying_face: What?
 
-Last Friday I was trying to renew my github profile and I thought that it would be
-nice to share something outside "coding stuff", so that whoever visits it might get
-to know a little bit more about me.
+Last Friday (14-10-2022) I was trying to renew my github profile and I thought
+that it would be nice to share something outside "coding stuff", so that whoever
+visits it might get to know a little bit more about me.
 
 Three months ago I decided to fight some anxiety episodes by running away from
 them (literally), so I thought that would be cool to share my strava stats.
@@ -28,7 +28,7 @@ _The result:_
 
 <!-- TODO compress png -->
 
-<img src="iframe not rendering" alt="./img/iframe_not_rendering.png" style="width:350px;"/>
+<img src="./img/iframe_not_rendering.png" alt="iframe not rendering" />
 
 As I suspected, even though markdown allows inline html, github does not render it.
 It makes sense for security reasons. At this point I thought maybe it does not
