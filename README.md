@@ -5,14 +5,14 @@ https://www.credly.com/badges/6855d098-6a9f-4292-bb2c-aa3745d8622c/public_url
 ![ViewCount](http://bit.ly/Thomas-Github-Visits)
 -->
 
-## Hi :wave:, my name is Josep Lluis Giralt D'Lacoste but you can call me Pep :smile:
+## Hi 👋, my name is Josep Lluis Giralt D'Lacoste but you can call me Pep 😄
 
-- :angel: Hashicorp products advocate
-- :whale: Docker lover
-- :ship: Kubernetes enthusiast
-- :purple_heart: Elixir writer and erlang priest :heart:
-- :building_construction: Terraformer
-- :robot: a bit obsessed with automation
+- 👼 Hashicorp products advocate
+- 🐳 Docker lover
+- 🚢 Kubernetes enthusiast
+- 💜 Elixir writer and erlang priest ❤️
+- 🏗️ Terraformer
+- 🤖 A bit obsessed with automation
 
 ## About
 
@@ -21,13 +21,13 @@ stage of the delivery process and I've been struggling to explain to the
 market what is it what I like. I like code! It does not matter if it
 implements some business logic in the application layer or if it declares some
 resources at the operations layer. If you want to know more about my interests
-please take a :eyes: at my ventures.
+please take a 👀 at my ventures.
 
 ## Ventures
 
 - [The strava summary](./ventures/STRAVA_SUMMARY.md)
 
-## Strava summary ( 2022-10-13 //  2022-11-13 )
+## Strava summary ( 2022-10-19 //  2022-11-19 )
 
 <!--
 meter el badge the last synced ci passed
@@ -36,10 +36,10 @@ https://github.com/ikatyang/emoji-cheat-sheet
 
 ![Strava sync](https://github.com/gilacost/gilacost/workflows/Strava%20sync/badge.svg)
 
-  * Runs: 15
-  * Elevation Gain: 3797.10 m
-  * Total time: 10:51:54
-  * Total distance: 96.27 km
+  * Runs: 14
+  * Elevation Gain: 3577.20 m
+  * Total time: 10:13:57
+  * Total distance: 90.54 km
 
 <!-- ## Skills in the box -->
 <!-- ## Working/Reading -->
@@ -64,7 +64,5 @@ https://github.com/ikatyang/emoji-cheat-sheet
    <br>
 <br>
 -->
-<a target="_blank" href="https://pepo.ventures/"><img src="https://img.shields.io/badge/-WEB-FF4088?style=for-the-badge&logo=Hugo&logoColor=white"></img></a>
-<a target="_blank" href="https://www.linkedin.com/in/joseplluisgiraltdlacoste/"><img src="https://img.shields.io/badge/-LinkedIn-0077B5?style=for-the-badge&logo=Linkedin&logoColor=white"></img></a>
-<a target="_blank" href="mailto:josep.g.dlacoste@gmail.com"><img src="https://img.shields.io/badge/-Gmail-D14836?style=for-the-badge&logo=Gmail&logoColor=white"></img></a>
-<a target="_blank" href="https://www.strava.com/athletes/16733304"><img src="https://img.shields.io/badge/Strava-FC4C02.svg?style=for-the-badge&logo=Strava&logoColor=white"></img></a>
+
+[!["Pep's website"](./img/web.svg)](https://pepo.ventures/) [!["Pep's linkedin"](./img/linkedin.svg)](https://www.linkedin.com/in/joseplluisgiraltdlacoste/) [!["Pep's email"](./img/mail.svg)](mailto:josep.g.dlacoste@gmail.com) [!["Pep's strava"](./img/strava.svg)](https://www.strava.com/athletes/16733304)

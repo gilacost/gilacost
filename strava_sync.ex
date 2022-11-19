@@ -19,8 +19,6 @@ refresh_token_url =
   }
 } = Req.post!(refresh_token_url)
 
-# TODO push refresh token to github secret might not be needed...
-
 if System.get_env("DBEUG") == "1" do
   IO.puts(
     "\nAccess token: #{access_token}\nRefresh token: #{refresh_token}\n\n" <>
@@ -68,8 +66,6 @@ summary_acc = %{
     }
   end)
 
-# TODO generate stats (Runs, Elevation Gain, Avg/pace, Distance, From date)
-
 defmodule Format do
   @one_minute 60
   @one_hour 3600
@@ -108,9 +104,6 @@ defmodule Format do
     |> String.pad_leading(padding, "0")
   end
 end
-
-# Avg/Pace: #{(summary.avg_pace / number_of_runs) |> :erlang.float_to_binary(decimals: 2)}
-# TODO maybe assignation is not needed and then can be used
 
 new_readme =
   "README.md.eex"

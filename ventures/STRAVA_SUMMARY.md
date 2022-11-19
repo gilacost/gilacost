@@ -1,4 +1,4 @@
-## :partying_face: What?
+## 🥳 What?
 
 Last Friday (14-10-2022) I was trying to renew my github profile and I thought
 that it would be nice to share something outside "coding stuff", so that whoever
@@ -7,11 +7,11 @@ visits it might get to know a little bit more about me.
 Three months ago I decided to fight some anxiety episodes by running away from
 them (literally), so I thought that would be cool to share my strava stats.
 
-## :pinched_fingers: Objective
+## 🤌 Objective
 
 **Share a summary of the strava stats in my github profile**
 
-## :exploding_head: Iterations
+## 🤯 Iterations
 
 1. Iframe not rendered in github
 2. Iframe not working properly anyway
@@ -20,9 +20,10 @@ them (literally), so I thought that would be cool to share my strava stats.
 ### Iframe not rendered in github
 
 If you go to your profile in strava you will find a share button in the bottom
-right corner that says "Share Activities". If you press this button, a pop-up will
-appear with some html code (an iframe) that you can embed into your code. Theoretically markdown
-lets you use inline html, [see this post](https://daringfireball.net/projects/markdown/syntax#html).
+right corner that says "Share Activities". If you press this button, a pop-up
+will appear with some html code (an iframe) that you can embed into your code.
+Theoretically markdown lets you use inline html, [see this
+post](https://daringfireball.net/projects/markdown/syntax#html).
 
 _The result:_
 
@@ -30,9 +31,9 @@ _The result:_
 
 <img src="./img/iframe_not_rendering.png" alt="iframe not rendering" />
 
-As I suspected, even though markdown allows inline html, github does not render it.
-It makes sense for security reasons. At this point I thought maybe it does not
-work in my github profile but there is not reason why it should not work in
+As I suspected, even though markdown allows inline html, github does not render
+it. It makes sense for security reasons. At this point I thought maybe it does
+not work in my github profile but there is not reason why it should not work in
 github pages.
 
 ### Iframe not working properly anyway
@@ -90,25 +91,24 @@ Mix.install([
 ```
 
 Unfortunately this does not work as the stats shown in the public profile are
-loaded after the DOM has been rendered by some :shit: jQuery or who knows
-:shrug:. This outcome drove me to my latest iteration and final
-solution.
+loaded after the DOM has been rendered by some 💩 jQuery or who knows 🤷. This
+outcome drove me to my latest iteration and final solution.
 
-## :cowboy_hat_face: Final solution
+## 🤠 Final solution
 
 1. Strava API
-   1.1 Refreshing the OAuth token
-   1.2 Getting the activities
-   1.3 EEX and rewriting the readme
-2. Automating the summary with GHA.
+   1. Refreshing the OAuth token
+   2. Getting the activities
+   3. EEX and rewriting the readme
+2. Automating the summary with GHA
 
 ### Strava API
 
 **You need to create an strava application, see
 [the docs](https://developers.strava.com/docs/authentication/).**
 
-To be able to perform requests the Strava API without user interaction, we need to get a
-OAuth refresh token. We can build a simple router with plug and
+To be able to perform requests the Strava API without user interaction, we need
+to get a OAuth refresh token. We can build a simple router with plug and
 [strava](https://github.com/slashdotdash/strava) to print the refresh token
 like this:
 
@@ -168,8 +168,9 @@ authorization flow, you need to save the `refresh_token` somewhere.
 
 #### Refreshing oauth token
 
-Once you have the refresh token you can ask for new access tokens if you hit the
-refresh token url with your `client_id` and `client_secret` as query params.
+After getting the refresh token you can ask for new access tokens if you hit
+the refresh token url with your `client_id` and `client_secret` as query
+params.
 
 ```elixir
 Mix.install([
@@ -216,9 +217,9 @@ after_unix = Date.utc_today() |> Timex.shift(months: -1) |> Timex.to_unix()
 
 #### EEX and rewriting the readme
 
-All of this is looking quite sexy so far, but, how do I show this in the readme?
-If I want thrdr stats to be shown in my profile, I need to use some kind of
-templating system that allows me to build the stats and produce a new
+All of this is looking quite sexy so far, but, how do I show this in the
+readme? If I want the stats to be shown in my profile, I need to use some kind
+of templating system that allows me to build the stats and produce a new
 updated readme.
 
 This is when EEX comes to play:
@@ -250,10 +251,10 @@ and the `README.md.eex` contains:
   * Total distance: <%= total_distance %> km
 ```
 
-### Automating the summary with GHA.
+### 🤖 Automating the summary with GHA.
 
 If you know me, you will already be aware that if something can be automated, I
-will do so :robot: .
+will do so.
 
 In this case I wanted to:
 
@@ -284,10 +285,10 @@ I did this via [github_actions](https://github.com/features/actions):
     add: "*.md"
 ```
 
-- find the full elixir script in [here](../strava_sync.ex).
-- find the GHA action in [here](../.github/workflows/strava_sync.yml).
+- find the full elixir script in [here](https://github.com/gilacost/gilacost/blob/master/strava_sync.ex).
+- find the GHA action in [here](https://github.com/gilacost/gilacost/blob/master/.github/workflows/strava_sync.yml).
 - latest strava sync workflow badge ![Strava sync](https://github.com/gilacost/gilacost/workflows/Strava%20sync/badge.svg)
 
 <hr>
 
-**love :heart: and peace :bird: to all**
+**love ❤️ and peace 🐦 to all**
