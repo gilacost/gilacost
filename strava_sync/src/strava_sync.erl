@@ -22,7 +22,6 @@ main(_Args) ->
     HeaderHead = <<"Bearer ">>,
     Headers = [{<<"Authorization">>, <<HeaderHead/binary, AccessToken/binary>>}],
     Activities = make_request(get, ActivitiesUrl, Headers, <<>>, []),
-    % {ok, Activities} = file:read_file("activities.json"),
     RunsSummary = runs_summary(Activities, empty_summary()),
     Template = bbmustache:parse_file(<<"../README.mustache">>),
     file:write_file("../README.md", bbmustache:compile(Template, RunsSummary)),
@@ -109,3 +108,26 @@ add_run(
         "total_elevation_gain" => TotalElevationGain + RunAscent,
         "number_of_runs" => NumberOfRuns + 1
     }.
+
+-ifdef(TEST).
+-include_lib("eunit/include/eunit.hrl").
+summary_test_() ->
+    {ok, Activities} = file:read_file("activities.json"),
+    ActivitiesDecoded = jsx:decode(Activities, [{return_maps, true}]),
+    RunsSummary = runs_summary(ActivitiesDecoded, empty_summary()),
+
+    [
+        ?_assertEqual(
+            #{
+                "avg_pace" => 32.654,
+                "from_date" => edate:date_to_string(edate:shift(edate:today(), -1, month)),
+                "number_of_runs" => 13,
+                "to_date" => edate:date_to_string(edate:today()),
+                "total_distance" => <<"84.29">>,
+                "total_elevation_gain" => 3328.5
+            },
+            maps:remove("total_time", RunsSummary)
+        )
+    ].
+% #TODO total_time
+-endif.
