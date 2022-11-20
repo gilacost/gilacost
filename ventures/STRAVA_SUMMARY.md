@@ -287,7 +287,7 @@ I did this via [github_actions](https://github.com/features/actions):
 
 - find the full elixir script in [here](https://github.com/gilacost/gilacost/blob/master/strava_sync.ex).
 - find the GHA action in [here](https://github.com/gilacost/gilacost/blob/master/.github/workflows/strava_sync.yml).
-- latest strava sync workflow badge ![Strava sync](https://github.com/gilacost/gilacost/workflows/Strava%20sync/badge.svg)
+- latest strava sync workflow badge ![Strava sync EX](https://github.com/gilacost/gilacost/workflows/Strava%20sync%20EX/badge.svg)
 
 <hr>
 
