@@ -1,13 +1,18 @@
 -module(strava_sync).
 
-%% API exports
 -export([main/1]).
 
-%%====================================================================
-%% API functions
-%%====================================================================
+-type args() :: list().
+-type epoch() :: calendar:time().
+-type method() :: hackney:method().
+-type url() :: hackney:url().
+-type headers() :: hackney:headers().
+-type body() :: hackney:body().
+-type options() :: hackney:options().
+-type summary() :: #{list() => number() | list()}.
 
 %% escript Entry point
+-spec main(args()) -> no_return().
 main(_Args) ->
     application:ensure_all_started(hackney),
     RefreshTokenUrl = refresh_token_url(),
@@ -24,9 +29,7 @@ main(_Args) ->
     io:format("Sumary: ~p~n One month ago: ~p~n", [RunsSummary, one_month_ago()]),
     erlang:halt(0).
 
-%%====================================================================
-%% Internal functions
-%%====================================================================
+-spec refresh_token_url() -> list().
 refresh_token_url() ->
     StravaClientId = os:getenv("STRAVA_CLIENT_ID"),
     StravaRefreshToken = os:getenv("STRAVA_REFRESH_TOKEN"),
@@ -36,20 +39,24 @@ refresh_token_url() ->
         "grant_type=refresh_token&refresh_token=" ++ StravaRefreshToken ++ "&" ++
         "client_id=" ++ StravaClientId ++ "&client_secret=" ++ StravaClientSecret.
 
+-spec activities_url(epoch()) -> list().
 activities_url(AfterUnix) ->
     "https://www.strava.com/api/v3/athlete/activities?after=" ++ AfterUnix ++ "&per_page=200".
 
+-spec make_request(method(), url(), headers(), body(), options()) -> map().
 make_request(Method, Url, Headers, Payload, Options) ->
     {ok, _S, _H, Ref} = hackney:request(Method, Url, Headers, Payload, Options),
     {ok, Body} = hackney:body(Ref),
     % file:write_file("activities.json", Body),
     jsx:decode(Body, [{return_maps, true}]).
 
+-spec one_month_ago() -> epoch().
 one_month_ago() ->
     OneMonthAgo = edate:shift(edate:today(), -1, month),
     EpochSeconds = calendar:datetime_to_gregorian_seconds({{1970, 1, 1}, {0, 0, 0}}),
     calendar:datetime_to_gregorian_seconds({OneMonthAgo, {0, 0, 0}}) - EpochSeconds.
 
+-spec runs_summary([map()], summary()) -> summary().
 runs_summary(
     [],
     Acc = #{
@@ -67,7 +74,7 @@ runs_summary([#{<<"type">> := <<"Run">>} = H | T], Acc) ->
 runs_summary([_H | T], Acc) ->
     runs_summary(T, Acc).
 
-% todo from and to day in last list item signature
+-spec empty_summary() -> summary().
 empty_summary() ->
     #{
         "total_distance" => 0,
@@ -79,6 +86,7 @@ empty_summary() ->
         "to_date" => edate:date_to_string(edate:today())
     }.
 
+-spec add_run(summary(), map()) -> summary().
 add_run(
     #{
         "total_distance" := TotalDistance,
