@@ -1,0 +1,52 @@
+name: Strava sync ERL
+
+on:
+  push:
+  # schedule:
+  #   - cron: "0 0 * * 0"
+  # workflow_dispatch:
+
+env:
+  OTP_VERSION: 25
+  REBAR3_VERSION: 3.20.0
+  DEBUG: "1"
+
+jobs:
+  build-test:
+    name: Build and Check Elixir Project
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup BEAM v${{ env.OTP_VERSION }}
+        uses: erlef/setup-beam@v1
+        with:
+          otp-version: ${{ env.OTP_VERSION }}
+          rebar3-version: ${{ env.REBAR3_VERSION }}
+
+      - name: Turn EEX template into a mustache one
+        run: |
+          sed -e 's/ <%= / {{ /g' README.md.eex | sed -e 's/ %> / }} /g' | sed -e 's/ %>/ }}/g' > README.mustache
+
+      - name: Escriptize and strava sync
+        working-directory: ./strava_sync
+        env:
+          STRAVA_CLIENT_ID: ${{ secrets.STRAVA_CLIENT_ID }}
+          STRAVA_REFRESH_TOKEN: ${{ secrets.STRAVA_REFRESH_TOKEN }}
+          STRAVA_CLIENT_SECRET: ${{ secrets.STRAVA_CLIENT_SECRET }}
+        run: |
+          DEBUG=1 rebar3 escriptize
+          ./_build/default/bin/strava_sync
+
+      - name: Get current date
+        id: date
+        run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
+
+      - name: Commit changes
+        uses: EndBug/add-and-commit@v9
+        with:
+          author_name: Josep Lluis Giralt D'Lacoste
+          author_email: josepgiraltdlacoste@gmail.com
+          message: "Strava sync ${{ steps.date.outputs.date }}"
+          add: "*.md"
