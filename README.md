@@ -27,19 +27,20 @@ please take a 👀 at my ventures.
 
 - [The strava summary](./ventures/STRAVA_SUMMARY.md)
 
-## Strava summary ( 2022-10-19 //  2022-11-19 )
+## Strava summary ( 2022-10-20 //  2022-11-20 )
 
 <!--
 meter el badge the last synced ci passed
 https://github.com/ikatyang/emoji-cheat-sheet
 -->
 
-![Strava sync](https://github.com/gilacost/gilacost/workflows/Strava%20sync/badge.svg)
+![Strava sync ex](https://github.com/gilacost/gilacost/workflows/strava%20sync%20ex/badge.svg)
+![Strava sync erl](https://github.com/gilacost/gilacost/workflows/strava%20sync%20erl/badge.svg)
 
   * Runs: 14
-  * Elevation Gain: 3577.20 m
-  * Total time: 10:13:57
-  * Total distance: 90.54 km
+  * Elevation Gain: 3577.2 m
+  * Total time: 10 hr, 10 min, 47 sec
+  * Total distance: 90.55 km
 
 <!-- ## Skills in the box -->
 <!-- ## Working/Reading -->
@@ -47,22 +48,17 @@ https://github.com/ikatyang/emoji-cheat-sheet
 - update hacker rank with erlang katas
 - todo group all AOCs
 - bring hacker news assessments to repo
-- more sexy badges
-- personal site
 - more badges
 - bring all assessments to assessments
-- badge for ellie's co-op PR
 - repo with courses and put terraform stuff and others
 -->
 
 <hr>
-<!--
 <p align="center">
    <i>A problem can be solved in a 100 different ways and There's always an easier way to solve a problem.</i>
    <br>
    <i>You miss 100% of the shots you don't take.</i>
    <br>
 <br>
--->
 
 [!["Pep's website"](./img/web.svg)](https://pepo.ventures/) [!["Pep's linkedin"](./img/linkedin.svg)](https://www.linkedin.com/in/joseplluisgiraltdlacoste/) [!["Pep's email"](./img/mail.svg)](mailto:josep.g.dlacoste@gmail.com) [!["Pep's strava"](./img/strava.svg)](https://www.strava.com/athletes/16733304)
