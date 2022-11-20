@@ -1,4 +1,4 @@
-name: Strava sync
+name: Strava sync EX
 
 on:
   schedule:
@@ -11,8 +11,8 @@ env:
   DEBUG: "1"
 
 jobs:
-  build-test:
-    name: Build and Check Elixir Project
+  sync-commit:
+    name: Synchronize strava and commit new README (EX)
     runs-on: ubuntu-latest
     steps:
       - name: Checkout

@@ -1,10 +1,9 @@
 name: Strava sync ERL
 
 on:
-  push:
-  # schedule:
-  #   - cron: "0 0 * * 0"
-  # workflow_dispatch:
+  schedule:
+    - cron: "0 0 * * MON"
+  workflow_dispatch:
 
 env:
   OTP_VERSION: 25
@@ -12,8 +11,8 @@ env:
   DEBUG: "1"
 
 jobs:
-  build-test:
-    name: Build and Check Elixir Project
+  sync-commit:
+    name: Synchronize strava and commit new README (ERL)
     runs-on: ubuntu-latest
     steps:
       - name: Checkout

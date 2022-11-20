@@ -66,42 +66,22 @@ summary_acc = %{
     }
   end)
 
-defmodule Format do
-  @one_minute 60
-  @one_hour 3600
-  def to_hh_mm_ss(seconds) when seconds >= @one_hour do
-    h = div(seconds, @one_hour)
+defmodule Convert do
+  @minute 60
+  @hour @minute * 60
+  @day @hour * 24
+  @week @day * 7
+  @divisor [@week, @day, @hour, @minute, 1]
 
-    m =
-      seconds
-      |> rem(@one_hour)
-      |> div(@one_minute)
-      |> pad_int()
+  def sec_to_str(sec) do
+    {_, [s, m, h, d, w]} =
+      Enum.reduce(@divisor, {sec, []}, fn divisor, {n, acc} ->
+        {rem(n, divisor), [div(n, divisor) | acc]}
+      end)
 
-    s =
-      seconds
-      |> rem(@one_hour)
-      |> rem(@one_minute)
-      |> pad_int()
-
-    "#{h}:#{m}:#{s}"
-  end
-
-  def to_hh_mm_ss(seconds) do
-    m = div(seconds, @one_minute)
-
-    s =
-      seconds
-      |> rem(@one_minute)
-      |> pad_int()
-
-    "00:#{m}:#{s}"
-  end
-
-  defp pad_int(int, padding \\ 2) do
-    int
-    |> Integer.to_string()
-    |> String.pad_leading(padding, "0")
+    ["#{w} wk", "#{d} d", "#{h} hr", "#{m} min", "#{s} sec"]
+    |> Enum.reject(fn str -> String.starts_with?(str, "0") end)
+    |> Enum.join(", ")
   end
 end
 
@@ -111,7 +91,7 @@ new_readme =
   |> EEx.eval_string(
     number_of_runs: number_of_runs,
     total_elevation_gain: :erlang.float_to_binary(summary.total_elevation_gain, decimals: 2),
-    total_time: Format.to_hh_mm_ss(summary.total_time),
+    total_time: Convert.sec_to_str(summary.total_time),
     total_distance:
       summary.total_distance |> Kernel./(1000) |> :erlang.float_to_binary(decimals: 2),
     from_date: after_unix |> DateTime.from_unix!() |> DateTime.to_date(),
