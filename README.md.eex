@@ -28,6 +28,7 @@ please take a 👀 at my ventures.
 ## Ventures
 
 - [The strava summary](./ventures/STRAVA_SUMMARY.md)
+- [Rewriting the strava summary in erl](./ventures/STRAVA_SUMMARY_ERL.md)
 
 ## Strava summary ( <%= from_date %> //  <%= to_date %> )
 

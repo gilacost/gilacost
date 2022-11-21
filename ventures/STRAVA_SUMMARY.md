@@ -286,9 +286,11 @@ I did this via [github_actions](https://github.com/features/actions):
 ```
 
 - find the full elixir script in [here](https://github.com/gilacost/gilacost/blob/master/strava_sync.ex).
-- find the GHA action in [here](https://github.com/gilacost/gilacost/blob/master/.github/workflows/strava_sync.yml).
+- find the GHA action in [here](https://github.com/gilacost/gilacost/blob/master/.github/workflows/strava_sync_ex.yml).
 - latest strava sync workflow badge ![Strava sync EX](https://github.com/gilacost/gilacost/workflows/Strava%20sync%20EX/badge.svg)
 
 <hr>
 
-**love ❤️ and peace 🐦 to all**
+<p align="center">
+<b>love ❤️ and peace 🐦 to all</b>
+</p>
