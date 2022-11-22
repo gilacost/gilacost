@@ -41,7 +41,7 @@ https://github.com/ikatyang/emoji-cheat-sheet
 ![Strava sync ERL](https://github.com/gilacost/gilacost/workflows/Strava%20sync%20ERL/badge.svg)
 
   * Runs: 14
-  * Elevation Gain: 3516.0000000000005 m
+  * Elevation Gain: 3516.00 m
   * Total time: 10 hr, 4 min, 38 sec
   * Total distance: 89.10 km
 
