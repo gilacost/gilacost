@@ -23,11 +23,14 @@ implements some business logic in the application layer or if it declares some
 resources at the operations layer. If you want to know more about my interests
 please take a 👀 at my ventures.
 
+[!["Pep's website"](./img/web.svg)](https://pepo.ventures/) [!["Pep's linkedin"](./img/linkedin.svg)](https://www.linkedin.com/in/joseplluisgiraltdlacoste/) [!["Pep's email"](./img/mail.svg)](mailto:josep.g.dlacoste@gmail.com) [!["Pep's strava"](./img/strava.svg)](https://www.strava.com/athletes/16733304)
+
 ## Ventures
 
 - [The strava summary](./ventures/STRAVA_SUMMARY.md)
+- [Rewriting the strava summary in erl](./ventures/STRAVA_SUMMARY_ERL.md)
 
-## Strava summary ( 2022-10-20 // 2022-11-20 )
+## Strava summary ( 2022-10-22 //  2022-11-22 )
 
 <!--
 meter el badge the last synced ci passed
@@ -37,10 +40,10 @@ https://github.com/ikatyang/emoji-cheat-sheet
 ![Strava sync EX](https://github.com/gilacost/gilacost/workflows/Strava%20sync%20EX/badge.svg)
 ![Strava sync ERL](https://github.com/gilacost/gilacost/workflows/Strava%20sync%20ERL/badge.svg)
 
-- Runs: 14
-- Elevation Gain: 3577.2 m
-- Total time: 10 hr, 10 min, 47 sec
-- Total distance: 90.55 km
+  * Runs: 14
+  * Elevation Gain: 3516.0000000000005 m
+  * Total time: 10 hr, 4 min, 38 sec
+  * Total distance: 89.10 km
 
 <!-- ## Skills in the box -->
 <!-- ## Working/Reading -->
@@ -51,18 +54,14 @@ https://github.com/ikatyang/emoji-cheat-sheet
 - more badges
 - bring all assessments to assessments
 - repo with courses and put terraform stuff and others
+- PRs from ex projects
 -->
 
 <hr>
 <p align="center">
-   <i>Make it work, then make it beautiful, then if you really, really have to, make it fast. 90 percent of the time, if you make it beautiful, it will already be fast. So really, just make it beautiful!</i>
-   <br>
-   <i>Joe Armstrong</i>
-   <br>
+   <i>Make it work, then make it beautiful, then if you really, really have to, make it fast. 90 percent of the time, if you make it beautiful, it will already be fast. So really, just make it beautiful! - <b>Joe Armstrong</b></i>
 <br>
-
-[!["Pep's website"](./img/web.svg)](https://pepo.ventures/) [!["Pep's linkedin"](./img/linkedin.svg)](https://www.linkedin.com/in/joseplluisgiraltdlacoste/) [!["Pep's email"](./img/mail.svg)](mailto:josep.g.dlacoste@gmail.com) [!["Pep's strava"](./img/strava.svg)](https://www.strava.com/athletes/16733304)
-
 <hr>
-
-**love ❤️ and peace 🐦 to all**
+<p align="center">
+<b>love ❤️ and peace 🐦 to all</b>
+</p>
