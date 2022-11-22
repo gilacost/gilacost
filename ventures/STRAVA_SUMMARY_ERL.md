@@ -1,9 +1,12 @@
 ## 🥳 What?
 
+_Context: I implemented a small script that gathers Strava stats and commits
+weekly to my Github profile using GitHub actions and elixir._
+
 After writing the [strava summary](../STRAVA_SUMMARY.md) I decided to publish
 my venture into [elixir status](https://elixirstatus.com/). I love to put
 things out there and imagining that maybe someone enjoys reading it 😋. What I
-was not expecting was to receive an invitation to the Elixir Mix podcast 😱.
+was not expecting, was to receive an invitation to the Elixir Mix podcast 😱.
 Talking on a podcast scares me. I like to be well prepared whenever I do any
 public speaking, so I used this project as a way to have something to talk
 about and to highlight my love for the BEAM ecosystem and it's beautiful
@@ -41,9 +44,9 @@ theoretically we just need to translate.
 
 I am not even sure why I am sharing this iteration, it was literally discarded
 at the minute. After some research, when I say "research" I mean googling
-"scripting in erlang", the first thing that I do is landing at the official
+"scripting in erlang", the first thing that I did was landing at the official
 erlang docs for [`escript`](https://www.erlang.org/doc/man/escript.html).
-I copy and paste the factorial `escript` example:
+Then I copied and pasted the factorial `escript` example:
 
 ```erlang
 #!/usr/bin/env escript
@@ -69,7 +72,7 @@ fac(0) -> 1;
 fac(N) -> N * fac(N-1).
 ```
 
-and then I run it following the docs like so:
+and then I ran it following the docs like so:
 
 ```bash
 $ chmod u+x factorial
@@ -88,12 +91,12 @@ you need to run the script via `escript factorial`_
 This was encouraging because I executed my first script in erlang, but as I
 said before, I immediately discarded it because I could not find within the
 docs a way to include external dependencies in our script. Theoretically we
-wont need any dependency to make a request thanks to inets but we'll need for
+wont need any dependency to make a requests thanks to inets but we'll need for
 sure to decode json and for the templating engine 💆🏽‍♂️..
 
 ## Moving to rebar3
 
-Ok, that was useful. No joking, it was, sometimes you just need to get started
+Ok, that was useful. No joking, it was, sometimes you just need to get started,
 and then you just end up where you wanted 🫶.
 My most immediate thought after this dead end was to look at `rebar3`. If you
 come from elixir I am sure that you have seen rebar from time to time, but if
@@ -106,8 +109,8 @@ _Note: at the time of writing if you google "rebar docs" you might end in
 
 <img src="./img/rebar_404.png" alt="rebar 404" />
 
-So please if you are interested in knowing more about rebar, please visit the
-official docs [here](https://rebar3.org/docs/getting-started/).
+So please if you are interested in knowing more about rebar, find the official
+docs [here](https://rebar3.org/docs/getting-started/).
 
 ### Escriptize with `inets`
 
@@ -157,8 +160,8 @@ Lets try to compile the script and run it!
 ```
 
 This is not a super useful output because there is no clue of where has it been
-built 😅. But if we run `ls` we'll see that we now we have a `_build`
-directory. Let us check its contents:
+built 😅. But if we run `ls` we'll see that now, we have a `_build` directory.
+Let us check its contents:
 
 ```bash
 .
@@ -175,8 +178,8 @@ directory. Let us check its contents:
             └── src -> ../../../../src
 ```
 
-This reminds us a bit of elixir and release building right? We are all connected
-🤖.
+This reminds us a bit of elixir and its \_build directory right? We are all
+connected 🤖.
 Why is it named default? If we look at our `rebar.config` we'll see that there
 is a profile named test, when you perform rebar commands you can specify a
 profile to be used when running them, if you do not specify one, it will default
@@ -218,20 +221,20 @@ _build
             └── src -> ../../../../src
 ```
 
-_Note: if you want to iterate quickly I suggest using rebar3 shell
-(similar to iex) and trigger recompile with r3:do(compile)_
-
 #### Including inets
+
+_Note: if you want to iterate quickly I suggest using rebar3 shell (similar to
+iex) and trigger recompile with r3:do(compile)_
 
 I do not know the rest of the world operates, but I personally, enjoy using as
 less dependencies as possible 🤠, it just gives me joy 👻. In this case I was
 expecting to avoid including a dependency to make http requests thanks to
-`inets`. Inets is an erlang application that is part is part of the
-[OTP codebase](https://github.com/erlang/otp/blob/33deeffc95f3e82fc39c004392131892d16faa43/lib/inets/src/inets_app/inets.app.src) and that if you read its
-[docs](https://www.erlang.org/doc/man/inets.html),
-provides the most basic api to the clients and servers that are part of
-the inets application. In our case we are interested in `:httpc` (client) nor
-`httpd` (daemon).
+`inets`.
+Inets is an erlang application that is part is part of the [OTP codebase]
+(https://github.com/erlang/otp/blob/33deeffc95f3e82fc39c004392131892d16faa43/lib/inets/src/inets_app/inets.app.src) and that if you read its [docs]
+(https://www.erlang.org/doc/man/inets.html), provides the most basic api to the
+clients and servers that are part of the inets application. In our case we are
+interested in `:httpc` (client) not `httpd` (daemon).
 
 _Note: if you need a http client you can also start inets in a mix project by
 adding inets to your `extra_applications: [:logger, :runtime_tools, :inets]`_
@@ -242,7 +245,7 @@ Lets include inets as extra application in rebar.config
 {escript_incl_apps, [ strava_sync, inets]}.
 ```
 
-and then check that inets is actually started 🤪 :
+and then check that inets is actually started 🤪:
 
 ```erlang
 rebar3 shell
@@ -281,8 +284,8 @@ Description: "Authenticity is not established by certificate path validation"
 This is looking good, well there is a warning reported by sasl that is a bit
 concerning, but we had an http response 🙌.
 
-Now that we have the capability of performing http request let us try to get our
-OAUTH refreshed token like in our `strava_sync.ex`.
+Now that we have the capability of performing http requests, let us try to get
+our OAUTH refreshed token like in our [strava_sync.ex](../strava_sync.ex).
 
 ```elixir
 ...
@@ -295,9 +298,8 @@ refresh_token_url =
 ```
 
 Let us comment everything in our elixir script and `IO.puts()` the url to copy
-and past it into our `eshell` and then make an http request.
-This time we'll use
-[`request-4`](https://www.erlang.org/doc/man/httpc.html#request-4).
+and paste it into our `eshell` and then make an http request. This time we'll
+use [`request-4`](https://www.erlang.org/doc/man/httpc.html#request-4).
 
 ```erlang
 3> RefreshTokenUrl="https://www.strava.com/oauth/token?grant_type=refresh_token&\
@@ -307,18 +309,16 @@ refresh_token=REFRESH_TOKEN&client_id=CLIENT_ID&client_secret=CLEINT_SECRET".
 ```
 
 This is a dead end, I never found out why this error was happening. As you can
-see that the message is not useful. After sinking in the inets codebase and
-hammering 🔨 `httpc` in the eshell ( maybe one hour ), I decided to let it go 🙇  
-and include one dependency to solve this! I guess it is not going to be the end
-of the world if I include an http client even that there is one built-in
+see, the message is not useful. After sinking in the inets codebase and
+hammering 🔨 `httpc` in the `eshell` ( maybe one hour ), I decided to let it go
+🙇 and include one dependency to solve this! I guess it is not going to be the
+end of the world if I include an http client even that there is one built-in
 🥹.
 
 ### Hackney to the rescue
 
-Lets cleanup everything inets related, at least in the codebase because the  
-headache will stay for sure!
-
-Once this is done let us add hackney:
+Lets clean up inets from the `rebar.config` and once this is done let us add
+hackney as dependency:
 
 1. Visit [hex.pm](https://hex.pm).
 2. Search for hackney
@@ -365,9 +365,9 @@ Eshell V12.3.2.5  (abort with ^G)
 ```
 
 If we read the [hackney docs](https://github.com/benoitc/hackney#basic-usage)
-we'll see that we need to be sure that hackney application is already started,
-be can do this by running `application:ensure_all_started(hackney).` and now let
-us try to perform the same request that failed with `httpc`.
+we'll see that we need to be sure that hackney application is started, be can
+do this by running `application:ensure_all_started(hackney).` and now let us
+try to perform the same request that failed with `httpc`.
 
 ```erlang
 4> hackney:request(post, RefreshTokenUrl, [], <<>>, []).
@@ -403,8 +403,8 @@ us try to perform the same request that failed with `httpc`.
 We have an OK response 🤘.
 
 Now it is a matter of translating the code base from
-[`strava_sync.ex`](../strava_sync.ex) into the entry point `src/strava_sync.erl`
-and we are off the races. 🏎
+[`strava_sync.ex`](../strava_sync.ex) into the entry point
+`src/strava_sync.erl` and we are off the races. 🏎
 
 ## Final notes
 
@@ -422,7 +422,7 @@ and we are off the races. 🏎
 _Note: pay attention to edate, the published version in hex does not work, so I
 had to pull the dependency directly from github_.
 
-2. The SED trick for README.mustache to avoid having to maintain two templates.
+2. The `sed` trick for README.mustache to avoid having to maintain two templates.
 
 ```yaml
 ---
@@ -433,12 +433,13 @@ had to pull the dependency directly from github_.
 
 _I know it is ugly but eeh, make it work!_
 
-3. Now there is a workflow in elixir that runs on Sundays and another in erlang that runs on Mondays.
+3. Now there is a workflow in elixir that runs on Sundays and another in erlang
+   that runs on Mondays.
 
 4. In order to iterate quickly and avoiding hitting the strava api rate limit,
-   I decided to store the [activities.json](../strava_sync/activities.json) and use
-   eunit to speed up the implementation of the activities reduction into the
-   summary:
+   I decided to store the [activities.json](../strava_sync/activities.json) and
+   use eunit to speed up the implementation of the activities reduction into
+   the summary:
 
 ```erlang
 -ifdef(TEST).
@@ -463,6 +464,8 @@ summary_test_() ->
     ].
 -endif.
 ```
+
+_The test above can be run via `rebar3 eunit`_
 
 <hr>
 
