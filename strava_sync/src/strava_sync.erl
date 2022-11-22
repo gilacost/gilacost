@@ -60,12 +60,14 @@ runs_summary(
     [],
     Acc = #{
         "total_time" := TotalTime,
-        "total_distance" := TotalDistance
+        "total_distance" := TotalDistance,
+        "total_elevation_gain" := TotalElevationGain
     }
 ) ->
     Acc#{
         "total_time" => convert_seconds:convert(TotalTime),
-        "total_distance" => float_to_binary(TotalDistance / 1000, [{decimals, 2}])
+        "total_distance" => float_to_binary(TotalDistance / 1000, [{decimals, 2}]),
+        "total_elevation_gain" => float_to_binary(TotalElevationGain, [{decimals, 2}])
     };
 runs_summary([#{<<"type">> := <<"Run">>} = H | T], Acc) ->
     NewSummary = add_run(Acc, H),
@@ -124,7 +126,7 @@ summary_test_() ->
                 "number_of_runs" => 13,
                 "to_date" => edate:date_to_string(edate:today()),
                 "total_distance" => <<"84.29">>,
-                "total_elevation_gain" => 3328.5
+                "total_elevation_gain" => <<"3328.50">>
             },
             maps:remove("total_time", RunsSummary)
         )
