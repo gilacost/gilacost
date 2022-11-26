@@ -1,6 +1,6 @@
 ## 🥳 What?
 
-After writing my [strava summary](../STRAVA_SUMMARY.md), a small script that
+After writing my [strava summary](./STRAVA_SUMMARY.md), a small script that
 gathers Strava stats and commits weekly to my Github profile using GitHub
 actions and elixir, I decided to publish my venture into
 [elixir status](https://elixirstatus.com/). I love putting things out there and
