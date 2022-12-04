@@ -1,0 +1,33 @@
+## Reading plan for the upcoming months
+
+- [ ] Programming Phoenix LiveView
+- [ ] Designing Elixir Systems with OTP
+- [ ] Craft GraphQL APIs in Elixir with Absinthe
+- [ ] knative
+- [ ] Testing Elixir
+- [ ] Concurrent Data Processing in Elixir
+- [ ] Genetic Algorithms in Elixir
+- [ ] Metaprogramming Elixir
+
+## Non-priority but interested
+
+- [ ] Property-Based Testing with PropEr, Erlang, and Elixir
+- [ ] Real-Time Phoenix
+- [ ] Programmer Passport: OTP
+- [ ] Programmer Passport: Elixir
+- [ ] Build a Binary Clock with Elixir and Nerves
+- [ ] Build a Weather Station with Elixir and Nerves
+- [ ] Seven More Languages in Seven Weeks
+- [ ] Exploring Graphs with Elixir
+- [ ] Building Table Views with Phoenix LiveView
+
+## TO wrap up
+
+- [ ] Programming Phoenix 1.4
+- [ ] Learn Functional Programming with Elixir
+- [ ] Adopting Elixir
+- [ ] Programming Elixir 1.6
+
+## Already read
+
+- [x] Programming Ecto
