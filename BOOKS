@@ -4,35 +4,39 @@
 - [ ] the simplicity cycle
 - [ ] the managers path ( audible )
 - [ ] the subtle art of not giving a fuck ( audible )
-- [ ] think like a leader, act like a leader ( audible )
+- [x] think like a leader, act like a leader ( audible )
 - [ ] confessions of a public speaker ( audible )
-- [ ] can't hurt me ( audible )
+- [x] can't hurt me
 
 ## Reading plan for the upcoming months
+
+- [ ] Programming Phoenix LiveView
+- [ ] Microservices patterns
+- [ ] Designing Elixir Systems with OTP
+- [ ] Genetic Algorithms in Elixir
+- [ ] Testing Elixir
+- [ ] Concurrent Data Processing in Elixir
+- [ ] Property-Based Testing with PropEr, Erlang, and Elixir
+- [ ] Metaprogramming Elixir
+- [ ] Craft GraphQL APIs in Elixir with Absinthe
+- [ ] Exploring Graphs with Elixir
+- [ ] knative
+- [ ] Building Table Views with Phoenix LiveView
+
+## Investigate
 
 - [ ] uno de python ML
 - [ ] uno de go
 - [ ] uno de nix
-- [ ] Programming Phoenix LiveView
-- [ ] Designing Elixir Systems with OTP
-- [ ] Craft GraphQL APIs in Elixir with Absinthe
-- [ ] knative
-- [ ] Testing Elixir
-- [ ] Concurrent Data Processing in Elixir
-- [ ] Genetic Algorithms in Elixir
-- [ ] Metaprogramming Elixir
 
 ## Non-priority but interested
 
-- [ ] Property-Based Testing with PropEr, Erlang, and Elixir
 - [ ] Real-Time Phoenix
 - [ ] Programmer Passport: OTP
 - [ ] Programmer Passport: Elixir
 - [ ] Build a Binary Clock with Elixir and Nerves
 - [ ] Build a Weather Station with Elixir and Nerves
 - [ ] Seven More Languages in Seven Weeks
-- [ ] Exploring Graphs with Elixir
-- [ ] Building Table Views with Phoenix LiveView
 
 ## TO wrap up
 
