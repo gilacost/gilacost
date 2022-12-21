@@ -30,7 +30,7 @@ please take a 👀 at my ventures.
 - [The strava summary](./ventures/STRAVA_SUMMARY.md)
 - [Rewriting the strava summary in erl](./ventures/STRAVA_SUMMARY_ERL.md)
 
-## Strava summary ( 2022-11-19 //  2022-12-19 )
+## Strava summary ( 2022-11-21 //  2022-12-21 )
 
 <!--
 meter el badge the last synced ci passed
@@ -41,9 +41,9 @@ https://github.com/ikatyang/emoji-cheat-sheet
 ![Strava sync ERL](https://github.com/gilacost/gilacost/workflows/Strava%20sync%20ERL/badge.svg)
 
   * Runs: 14
-  * Elevation Gain: 4133.00 m
-  * Total time: 13 hr, 58 min, 34 sec
-  * Total distance: 122.28 km
+  * Elevation Gain: 4198.20 m
+  * Total time: 14 hr, 14 min, 54 sec
+  * Total distance: 123.81 km
 
 <!-- ## Skills in the box -->
 <!-- ## Working/Reading -->
@@ -59,9 +59,15 @@ https://github.com/ikatyang/emoji-cheat-sheet
 
 <hr>
 <p align="center">
-   <i>Make it work, then make it beautiful, then if you really, really have to, make it fast. 90 percent of the time, if you make it beautiful, it will already be fast. So really, just make it beautiful! - <b>Joe Armstrong</b></i>
+  <i>Make it work, then make it beautiful, then if you really, really have to, make it fast. 90 percent of the time, if you make it beautiful, it will already be fast. So really, just make it beautiful! - <b>Joe Armstrong</b></i>
 <br>
+</p>
 <hr>
 <p align="center">
-<b>love ❤️ and peace 🐦 to all</b>
+  <i>Without commitment you'll never start, without consistency you'll never finish - <b>Denzel Washington</b> </i>
+<br>
+<hr>
+</p>
+<p align="center">
+  <b>love ❤️ and peace 🐦 to all</b>
 </p>
