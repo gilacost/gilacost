@@ -113,7 +113,7 @@ to get a OAuth refresh token. We can build a simple router with plug and
 like this:
 
 ```elixir
-defmodule RunningClub.Router do
+defmodule StravaSync.Router do
   use Plug.Router
 
   plug Plug.Logger
@@ -124,7 +124,7 @@ defmodule RunningClub.Router do
     url =
       "http://www.strava.com/oauth/authorize?client_id=#{Strava.client_id()}&response_type=code" <>
         "&redirect_uri=#{URI.encode_www_form(Strava.redirect_uri())}&approval_prompt=force" <>
-        "&scope=read_all,profile:read_all,activity:read_all"
+        "&scope=read_all,profile:read_all,activity:read_all,activity:write"
 
     body = "<html><body>You are being <a href=\"#{url}\">redirected</a>.</body></html>"
 
@@ -141,7 +141,6 @@ defmodule RunningClub.Router do
         }
       } = conn |> fetch_query_params()
 
-
     %OAuth2.Client{
       token: %OAuth2.AccessToken{
         refresh_token: refresh_token
@@ -153,14 +152,15 @@ defmodule RunningClub.Router do
   end
 
   match _ do
-    send_resp(conn, 404, "oops")
+    send_resp(conn, 404, "text/html", "oops")
   end
 
-  defp send_resp(conn, default_status, default_content_type, body) do
+  defp send_resp(conn, status, content_type, body) do
     conn
-    |> ensure_resp_content_type(default_content_type)
-    |> send_resp(conn.status || default_status, body)
+    |> put_resp_content_type(content_type)
+    |> send_resp(conn.status || status, body)
   end
+end
 ```
 
 Once you visit `localhost:4000/activities` and you follow the OAuth
