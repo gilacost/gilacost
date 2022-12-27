@@ -76,7 +76,7 @@ fac(0) -> 1;
 fac(N) -> N * fac(N-1).
 ```
 
-The docs explained that to run it you do:
+The docs explained that to run it you need to:
 
 ```bash
 $ chmod u+x factorial
@@ -96,18 +96,19 @@ This iteration was encouraging because I executed my first script in erlang,
 but I immediately discarded it because I could not find in the docs an
 explanation of how to include external dependencies in our script.
 Theoretically we won't need any dependencies to make requests thanks to inets,
-however, we will definitely need some to decode json and for the templating
-engine 💆🏽‍♂️..
+however, we will definitely need a dependency to decode json and another for the
+templating engine 💆🏽‍♂️..
 
 ## Moving to rebar3
 
 Ok, that was useful. No joke, it was. Sometimes you just need to get started,
-and that will help you end up where you wanted 🫶.
-My most immediate thought after this dead end was to look at `rebar3`. If you
-come from elixir I am sure that you have seen rebar from time to time, but if
-you do not know what it is, rebar is for erlang what `mix` is for elixir. It's
-a tool that allows you to create umbrellas, run tests with eunit, dialyzer and
-other interesting/useful tasks.
+and that will help you end up where you wanted 🫶. My most immediate thought
+after this dead end was to look at `rebar3`. If you come from elixir I am sure
+that you have seen rebar from time to time, but if you do not know what it is,
+rebar is for erlang what `mix` is for elixir. It's a tool that allows you to
+create umbrellas, run tests with eunit, dialyzer and other interesting/useful
+tasks. In our case, we are interested in
+[escriptize](https://rebar3.org/docs/getting-started/)
 
 _Note: at the time of writing if you google "rebar docs" you might end up at
 `https://rebar3.readme.io/docs/getting-started` and a beautiful 404 will arise_
@@ -183,12 +184,11 @@ When we check its contents, we see:
             └── src -> ../../../../src
 ```
 
-This is similar to elixir and its \_build directory right? We are all
-connected 🤖.
-Why is it named default? If we look at our `rebar.config` we'll see that there
-is a profile named test. When you perform rebar commands you can specify a
-profile to be used when running them, if you do not specify one, it will default
-to default 🤓. Try to run it with test profile!
+This is similar to elixir and its _build_ directory right? We are all connected
+🤖. Why is it named default? If we look at our `rebar.config` we'll see that
+there is a profile named test. When you perform rebar commands you can specify
+a profile to be used when running them, if you do not specify one, it will
+default to default 🤓. Try to run it with test profile!
 
 ```bash
 ❯ rebar3 as test escriptize
@@ -198,7 +198,7 @@ to default 🤓. Try to run it with test profile!
 ===> Building escript for strava_sync...
 ```
 
-Now if we do a tree \_build, we'll see that we have the test profile folder:
+Now if we do a tree _build_, we'll see that we have the test profile folder:
 
 ```bash
 _build
@@ -229,15 +229,14 @@ _build
 #### Including inets
 
 _Note: if you want to iterate quickly I suggest using rebar3 shell (similar to
-iex) and trigger recompile with r3:do(compile)_
+iex) and trigger recompile with `r3:do(compile)`_
 
 I do not know how the rest of the world operates, but I personally, enjoy using
-as least dependencies as possible 🤠, it just gives me joy 👻. In this case, I was
-expecting to avoid including a dependency to make http requests thanks to
-`inets`.
-Inets is an erlang application that is part of the [OTP codebase]
+as least dependencies as possible 🤠, it just gives me joy 👻. In this case, I
+was expecting to avoid including a dependency to make http requests thanks to
+`inets`. Inets is an erlang application that is part of the [OTP codebase]
 (https://github.com/erlang/otp/blob/33deeffc95f3e82fc39c004392131892d16faa43/lib/inets/src/inets_app/inets.app.src)
-and that if you read its [docs](https://www.erlang.org/doc/man/inets.html). It
+and that if you read its [docs](https://www.erlang.org/doc/man/inets.html), it
 provides the most basic api to the clients and servers that are part of the
 inets application. In our case we are interested in `:httpc` (client) not
 `httpd` (daemon).
@@ -310,7 +309,7 @@ use [`request-4`](https://www.erlang.org/doc/man/httpc.html#request-4).
 
 ```erlang
 3> RefreshTokenUrl="https://www.strava.com/oauth/token?grant_type=refresh_token&\
-refresh_token=REFRESH_TOKEN&client_id=CLIENT_ID&client_secret=CLEINT_SECRET".
+refresh_token=*****&client_id=****&client_secret=*****".
 4> httpc:request(post, {RefreshTokenUrl, []}, [],[]).
 {error,invalid_request}
 ```
@@ -437,7 +436,7 @@ had to pull the dependency directly from github_.
     sed -e 's/ <%= / {{ /g' README.md.eex | sed -e 's/ %> / }} /g' | sed -e 's/ %>/ }}/g' > README.mustache
 ```
 
-_I know it is ugly but eeh, make it work!_
+_I know it is ugly but eh, make it work!_
 
 3. Now there is a workflow in elixir that runs on Sundays and another in erlang
    that runs on Mondays.

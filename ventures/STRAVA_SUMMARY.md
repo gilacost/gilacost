@@ -5,7 +5,8 @@ that it would be nice to share something outside "coding stuff", so that whoever
 visits it might get to know a little bit more about me.
 
 Three months ago I decided to fight some anxiety episodes by running away from
-them (literally), so I thought that would be cool to share my strava stats.
+them (literally). After becoming a runner and having run for a while I thought
+that would be cool to share my strava stats.
 
 ## 🤌 Objective
 
@@ -19,7 +20,7 @@ them (literally), so I thought that would be cool to share my strava stats.
 
 ### Iframe not rendered in github
 
-If you go to your profile in strava you will find a share button in the bottom
+If you go to your profile in strava, you will find a share button in the bottom
 right corner that says "Share Activities". If you press this button, a pop-up
 will appear with some html code (an iframe) that you can embed into your code.
 Theoretically markdown lets you use inline html, [see this
@@ -62,7 +63,7 @@ it is not rendering any stats at all.
 
 <img src="./img/iframe_fail.png" alt="iframe_fail" style="width:350px;"/>
 
-Yet these are the real stats in the my public profile:
+Yet these are the real stats in my public profile:
 
 <img src="./img/public_profile.png" alt="public_profile" style="width:350px;"/>
 
@@ -75,7 +76,9 @@ As the public profile is loading the right stats, my mind tells me that the
 next natural approach is to parse the DOM in that public page and gather the
 stats.
 
-Thanks to elixir scripting introduced in [elixir 1.12](https://github.com/elixir-lang/elixir/releases/tag/v1.12.0) we can easily achieve this by using req and floki with
+Thanks to elixir scripting introduced in [elixir
+1.12](https://github.com/elixir-lang/elixir/releases/tag/v1.12.0) we can easily
+achieve this by using req and floki with
 [`Mix.install/2`](https://hexdocs.pm/mix/1.12/Mix.html#install/2):
 
 ```elixir
@@ -93,6 +96,8 @@ Mix.install([
 Unfortunately this does not work as the stats shown in the public profile are
 loaded after the DOM has been rendered by some 💩 jQuery or who knows 🤷. This
 outcome drove me to my latest iteration and final solution.
+
+**Note: you actually need to be authenticated to see those stats :sweat_smile:**
 
 ## 🤠 Final solution
 
@@ -164,7 +169,8 @@ end
 ```
 
 Once you visit `localhost:4000/activities` and you follow the OAuth
-authorization flow, you need to save the `refresh_token` somewhere.
+authorization flow, you need to save the `refresh_token` somewhere. If you the
+router code snippet there is a `IO.puts` that will print it for us.
 
 #### Refreshing oauth token
 
@@ -198,9 +204,9 @@ refresh_token_url =
 
 #### Getting the activities
 
-By hitting the refresh token url beforehand, we ensure that anytime we hit the
-activities url, our `access_token` will be valid; making our stats gathering
-script idempotent. Now we can get the activities like so:
+By hitting the refresh token url beforehand and always, we ensure that anytime
+we hit the activities url, our `access_token` will be valid; making our stats
+gathering script idempotent. Now we can get the activities like so:
 
 ```elixir
 ...
