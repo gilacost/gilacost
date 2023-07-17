@@ -30,7 +30,7 @@ please take a 👀 at my ventures.
 - [The strava summary](./ventures/STRAVA_SUMMARY.md)
 - [Rewriting the strava summary in erl](./ventures/STRAVA_SUMMARY_ERL.md)
 
-## Strava summary ( 2023-06-16 //  2023-07-16 )
+## Strava summary ( 2023-06-17 //  2023-07-17 )
 
 <!--
 meter el badge the last synced ci passed
