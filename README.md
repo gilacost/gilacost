@@ -30,7 +30,7 @@ please take a 👀 at my ventures.
 - [The strava summary](./ventures/STRAVA_SUMMARY.md)
 - [Rewriting the strava summary in erl](./ventures/STRAVA_SUMMARY_ERL.md)
 
-## Strava summary ( 2023-06-23 //  2023-07-23 )
+## Strava summary ( 2023-06-24 //  2023-07-24 )
 
 <!--
 meter el badge the last synced ci passed
@@ -40,10 +40,10 @@ https://github.com/ikatyang/emoji-cheat-sheet
 ![Strava sync EX](https://github.com/gilacost/gilacost/workflows/Strava%20sync%20EX/badge.svg)
 ![Strava sync ERL](https://github.com/gilacost/gilacost/workflows/Strava%20sync%20ERL/badge.svg)
 
-  * Runs: 11
-  * Elevation Gain: 862.80 m
-  * Total time: 5 hr, 19 min, 4 sec
-  * Total distance: 56.50 km
+  * Runs: 10
+  * Elevation Gain: 778.00 m
+  * Total time: 4 hr, 49 min, 23 sec
+  * Total distance: 51.35 km
 
 <!-- ## Skills in the box -->
 <!-- ## Working/Reading -->
