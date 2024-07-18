@@ -26,7 +26,7 @@ if System.get_env("DBEUG") == "1" do
   )
 end
 
-after_unix = Date.utc_today() |> Timex.shift(months: -1) |> Timex.to_unix()
+after_unix = Date.utc_today() |> Timex.shift(months: -12) |> Timex.to_unix()
 
 {:ok, %{body: activities}} =
   Req.get("https://www.strava.com/api/v3/athlete/activities?after=#{after_unix}&per_page=200",
