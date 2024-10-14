@@ -86,7 +86,7 @@ empty_summary() ->
     "from_date" =>
       edate:date_to_string(
         edate:shift(
-          edate:today(), -1, month)),
+          edate:today(), -12, month)),
     "to_date" =>
       edate:date_to_string(
         edate:today())}.
@@ -121,7 +121,7 @@ summary_test_() ->
                    "from_date" =>
                      edate:date_to_string(
                        edate:shift(
-                         edate:today(), -1, month)),
+                         edate:today(), -12, month)),
                    "number_of_runs" => 13,
                    "to_date" =>
                      edate:date_to_string(
