@@ -32,11 +32,6 @@ please take a 👀 at my ventures.
 
 ## Strava summary ( <%= from_date %> //  <%= to_date %> )
 
-<!--
-meter el badge the last synced ci passed
-https://github.com/ikatyang/emoji-cheat-sheet
--->
-
 ![Strava sync EX](https://github.com/gilacost/gilacost/workflows/Strava%20sync%20EX/badge.svg)
 ![Strava sync ERL](https://github.com/gilacost/gilacost/workflows/Strava%20sync%20ERL/badge.svg)
 
@@ -44,6 +39,10 @@ https://github.com/ikatyang/emoji-cheat-sheet
   * Elevation Gain: <%= total_elevation_gain %> m
   * Total time: <%= total_time %>
   * Total distance: <%= total_distance %> km
+
+## Books 
+
+Co-author of [Engineering Elixir Applications: Navigate Each Stage of Software Delivery with Confidence](https://pragprog.com/titles/beamops/engineering-elixir-applications)
 
 <!-- ## Skills in the box -->
 <!-- ## Working/Reading -->
