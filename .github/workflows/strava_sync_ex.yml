@@ -31,6 +31,7 @@ jobs:
           STRAVA_CLIENT_SECRET: ${{ secrets.STRAVA_CLIENT_SECRET }}
         run: |- 
           echo "Strava client id: $(base64 ${{ env.STRAVA_CLIENT_ID }})"
+          echo "${{ env.STRAVA_CLIENT_ID }}"
           elixir strava_sync.ex
 
       - name: Get current date
