@@ -1,7 +1,33 @@
 Mix.install([
   {:req, "~> 0.2"},
-  {:timex, "~> 3.7.9"}
+  {:timex, "~> 3.7.9"},
+  {:jason, "~> 1.4.4"}
 ])
+
+defmodule StravaActivities do
+  @strava_url "https://www.strava.com/api/v3/athlete/activities"
+
+  def fetch_all_runs(after_unix, access_token) do
+    fetch_runs(after_unix, access_token, 1, [])
+  end
+
+  defp fetch_runs(after_unix, access_token, page, all_activities) do
+    url = "#{@strava_url}?after=#{after_unix}&page=#{page}&per_page=200"
+    headers = [{"Authorization", "Bearer #{access_token}"}]
+
+    %Req.Response{body: activities} = Req.get!(url, headers: headers)
+
+    runs = Enum.filter(activities, fn activity -> activity["type"] == "Run" end)
+
+    updated_activities = all_activities ++ runs
+
+    if length(activities) < 200 do
+      updated_activities
+    else
+      fetch_runs(after_unix, access_token, page + 1, updated_activities)
+    end
+  end
+end
 
 strava_client_id = System.get_env("STRAVA_CLIENT_ID")
 strava_refresh_token = System.get_env("STRAVA_REFRESH_TOKEN")
@@ -28,10 +54,7 @@ end
 
 after_unix = Date.utc_today() |> Timex.shift(months: -12) |> Timex.to_unix()
 
-{:ok, %{body: activities}} =
-  Req.get("https://www.strava.com/api/v3/athlete/activities?after=#{after_unix}&per_page=200",
-    headers: [{"Authorization", "Bearer #{access_token}"}]
-  )
+activities = StravaActivities.fetch_all_runs(after_unix, access_token)
 
 summary_acc = %{
   total_distance: 0,
@@ -42,7 +65,6 @@ summary_acc = %{
 
 {summary, number_of_runs} =
   activities
-  |> Enum.filter(&(&1["type"] == "Run"))
   |> Enum.reduce({summary_acc, 0}, fn %{
                                         "distance" => run_distance,
                                         "elapsed_time" => run_time,

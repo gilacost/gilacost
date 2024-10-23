@@ -26,6 +26,8 @@ jobs:
 
       - name: Turn EEX template into a mustache one
         run: |
+          ## Disabling this until fixed as in elixir
+          exit 1
           sed -e 's/ <%= / {{ /g' README.md.eex | sed -e 's/ %> / }} /g' | sed -e 's/ %>/ }}/g' > README.mustache
 
       - name: Escriptize and strava sync
