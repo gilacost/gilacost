@@ -14,6 +14,8 @@ https://www.credly.com/badges/6855d098-6a9f-4292-bb2c-aa3745d8622c/public_url
 - 🏗️ Terraformer
 - 🤖 A bit obsessed with automation
 
+On a mission to change the way that teams operate and deliver software as co-founder of [BEAMOps software consultancy](https://beamops.co.uk).
+
 ## About
 
 I am a software engineer passionate about technology in general. I like every
@@ -25,12 +27,16 @@ please take a 👀 at my ventures.
 
 [!["Pep's website"](./img/web.svg)](https://pepo.ventures/) [!["Pep's linkedin"](./img/linkedin.svg)](https://www.linkedin.com/in/joseplluisgiraltdlacoste/) [!["Pep's email"](./img/mail.svg)](mailto:josep.g.dlacoste@gmail.com) [!["Pep's strava"](./img/strava.svg)](https://www.strava.com/athletes/16733304)
 
+## Books 
+
+Co-author of [Engineering Elixir Applications: Navigate Each Stage of Software Delivery with Confidence](https://pragprog.com/titles/beamops/engineering-elixir-applications)
+
 ## Ventures
 
 - [The strava summary](./ventures/STRAVA_SUMMARY.md)
 - [Rewriting the strava summary in erl](./ventures/STRAVA_SUMMARY_ERL.md)
 
-## Strava summary ( 2023-10-23 //  2024-10-23 )
+## Strava summary ( 2023-10-24 //  2024-10-24 )
 
 ![Strava sync EX](https://github.com/gilacost/gilacost/workflows/Strava%20sync%20EX/badge.svg)
 ![Strava sync ERL](https://github.com/gilacost/gilacost/workflows/Strava%20sync%20ERL/badge.svg)
@@ -40,9 +46,6 @@ please take a 👀 at my ventures.
   * Total time: 4 d, 11 hr, 59 min, 52 sec
   * Total distance: 1054.88 km
 
-## Books 
-
-Co-author of [Engineering Elixir Applications: Navigate Each Stage of Software Delivery with Confidence](https://pragprog.com/titles/beamops/engineering-elixir-applications)
 
 <!-- ## Skills in the box -->
 <!-- ## Working/Reading -->
