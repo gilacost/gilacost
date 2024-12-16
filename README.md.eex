@@ -38,8 +38,8 @@ Co-author of [Engineering Elixir Applications: Navigate Each Stage of Software D
 
 ## Strava summary ( <%= from_date %> //  <%= to_date %> )
 
-![Strava sync EX](https://github.com/gilacost/gilacost/workflows/Strava%20sync%20EX/badge.svg)
-![Strava sync ERL](https://github.com/gilacost/gilacost/workflows/Strava%20sync%20ERL/badge.svg)
+[![Strava sync EX](https://github.com/gilacost/gilacost/actions/workflows/strava_sync_ex.yml/badge.svg)](https://github.com/gilacost/gilacost/actions/workflows/strava_sync_ex.yml)
+[![Strava sync ERL](https://github.com/gilacost/gilacost/actions/workflows/strava_sync_erl.yml/badge.svg)](https://github.com/gilacost/gilacost/actions/workflows/strava_sync_erl.yml)
 
   * Runs: <%= number_of_runs %>
   * Elevation Gain: <%= total_elevation_gain %> m

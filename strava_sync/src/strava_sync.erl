@@ -1,6 +1,7 @@
 -module(strava_sync).
 
--export([main/1]).
+-export([main/1, refresh_token_url/0, activities_url/2, make_request/5,
+         fetch_all_activities/3, twelve_months_ago/0, runs_summary/2, empty_summary/0, add_run/2]).
 
 -type args() :: list().
 -type epoch() :: calendar:time().
@@ -18,14 +19,11 @@ main(_Args) ->
   RefreshTokenUrl = refresh_token_url(),
   #{<<"access_token">> := AccessToken} = make_request(post, RefreshTokenUrl, [], <<>>, []),
   AfterUnix = integer_to_list(twelve_months_ago()),
-  ActivitiesUrl = activities_url(AfterUnix),
-  HeaderHead = <<"Bearer ">>,
-  Headers = [{<<"Authorization">>, <<HeaderHead/binary, AccessToken/binary>>}],
-  Activities = make_request(get, ActivitiesUrl, Headers, <<>>, []),
+  Activities = fetch_all_activities(AfterUnix, AccessToken, 1),
   RunsSummary = runs_summary(Activities, empty_summary()),
   Template = bbmustache:parse_file(<<"../README.mustache">>),
   file:write_file("../README.md", bbmustache:compile(Template, RunsSummary)),
-  io:format("Sumary: ~p~n One month ago: ~p~n", [RunsSummary, twelve_months_ago()]),
+  io:format("Summary: ~p~nTwelve months ago: ~p~n", [RunsSummary, twelve_months_ago()]),
   erlang:halt(0).
 
 -spec refresh_token_url() -> list().
@@ -42,16 +40,32 @@ refresh_token_url() ->
   ++ "&client_secret="
   ++ StravaClientSecret.
 
--spec activities_url(epoch()) -> list().
-activities_url(AfterUnix) ->
-  "https://www.strava.com/api/v3/athlete/activities?after=" ++ AfterUnix ++ "&per_page=200".
+-spec activities_url(epoch(), integer()) -> list().
+activities_url(AfterUnix, Page) ->
+  "https://www.strava.com/api/v3/athlete/activities?after="
+  ++ AfterUnix
+  ++ "&page="
+  ++ integer_to_list(Page)
+  ++ "&per_page=200".
 
--spec make_request(method(), url(), headers(), body(), options()) -> map().
+-spec make_request(method(), url(), headers(), body(), options()) -> [map()] | map().
 make_request(Method, Url, Headers, Payload, Options) ->
   {ok, _S, _H, Ref} = hackney:request(Method, Url, Headers, Payload, Options),
   {ok, Body} = hackney:body(Ref),
-  % file:write_file("activities.json", Body),
   jsx:decode(Body, [{return_maps, true}]).
+
+%% Recursive activity fetch
+-spec fetch_all_activities(epoch(), binary(), integer()) -> [map()].
+fetch_all_activities(AfterUnix, AccessToken, Page) ->
+  ActivitiesUrl = activities_url(AfterUnix, Page),
+  Headers = [{<<"Authorization">>, <<"Bearer ", AccessToken/binary>>}],
+  Activities = make_request(get, ActivitiesUrl, Headers, <<>>, []),
+  case length(Activities) of
+    N when N < 200 ->
+      Activities;
+    _ ->
+      Activities ++ fetch_all_activities(AfterUnix, AccessToken, Page + 1)
+  end.
 
 -spec twelve_months_ago() -> epoch().
 twelve_months_ago() ->
@@ -70,11 +84,10 @@ runs_summary([],
   Acc#{"total_time" => convert_seconds:convert(TotalTime),
        "total_distance" => float_to_binary(TotalDistance / 1000, [{decimals, 2}]),
        "total_elevation_gain" => float_to_binary(TotalElevationGain, [{decimals, 2}])};
-runs_summary([#{<<"type">> := <<"Run">>} = H | T], Acc) ->
-  NewSummary = add_run(Acc, H),
-  runs_summary(T, NewSummary);
-runs_summary([_H | T], Acc) ->
-  runs_summary(T, Acc).
+runs_summary([#{<<"type">> := <<"Run">>} = Run | Rest], Acc) ->
+  runs_summary(Rest, add_run(Acc, Run));
+runs_summary([_ | Rest], Acc) ->
+  runs_summary(Rest, Acc).
 
 -spec empty_summary() -> summary().
 empty_summary() ->
@@ -117,17 +130,17 @@ summary_test_() ->
   ActivitiesDecoded = jsx:decode(Activities, [{return_maps, true}]),
   RunsSummary = runs_summary(ActivitiesDecoded, empty_summary()),
 
-  [?_assertEqual(#{"avg_pace" => 32.654,
+  [?_assertEqual(#{"avg_pace" => 492.7909999999999,
                    "from_date" =>
                      edate:date_to_string(
                        edate:shift(
                          edate:today(), -12, month)),
-                   "number_of_runs" => 13,
+                   "number_of_runs" => 168,
                    "to_date" =>
                      edate:date_to_string(
                        edate:today()),
-                   "total_distance" => <<"84.29">>,
-                   "total_elevation_gain" => <<"3328.50">>},
+                   "total_distance" => <<"1054.88">>,
+                   "total_elevation_gain" => <<"15813.00">>},
                  maps:remove("total_time", RunsSummary))].
 
 % #TODO total_time
