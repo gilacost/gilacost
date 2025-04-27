@@ -36,15 +36,15 @@ Co-author of [Engineering Elixir Applications: Navigate Each Stage of Software D
 - [The strava summary](./ventures/STRAVA_SUMMARY.md)
 - [Rewriting the strava summary in erl](./ventures/STRAVA_SUMMARY_ERL.md)
 
-## Strava summary ( 2024-04-21 //  2025-04-21 )
+## Strava summary ( 2024-04-27 //  2025-04-27 )
 
 [![Strava sync EX](https://github.com/gilacost/gilacost/actions/workflows/strava_sync_ex.yml/badge.svg)](https://github.com/gilacost/gilacost/actions/workflows/strava_sync_ex.yml)
 [![Strava sync ERL](https://github.com/gilacost/gilacost/actions/workflows/strava_sync_erl.yml/badge.svg)](https://github.com/gilacost/gilacost/actions/workflows/strava_sync_erl.yml)
 
-  * Runs: 160
-  * Elevation Gain: 12825.80 m
-  * Total time: 4 d, 8 hr, 2 min, 20 sec
-  * Total distance: 1040.35 km
+  * Runs: 162
+  * Elevation Gain: 12913.60 m
+  * Total time: 4 d, 9 hr, 4 min, 40 sec
+  * Total distance: 1051.02 km
 
 
 <!-- ## Skills in the box -->
